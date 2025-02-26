@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root
+{
+    --main-color:#0aad0a;
+    --light-color:#f0f3f2;
+    --shadow: rgba(145,158,171,.2) 0px 2px 4px -1px,rgba(145,158,171,.14) 0px 4px 5px 0px,rgba(145,158,171,.12) 0px 1px 10px 0px;
+    --font-family:'Encode Sans Expanded', sans-serif;
+    --rating-color:#ffc908;
+}
+
+body {
+  font-family: "Encode Sans", serif;
+  font-weight: 400;
+}
+a , a:hover{
+  color: black;
+  text-decoration: none;
+}
+.product:hover
+{
+  box-shadow: var(--shadow);
+  border: solid 1px var(--main-color);
+}
+.product .btn 
+{
+  transition: transform 1s , opacity 0.7s;
+  transform: translateY(100%);
+  opacity: 0;
+}
+.product:hover .btn 
+{
+  opacity: 1;
+  transform: translateY(0%);
+
+}
+
+.product .btn1 
+{
+  transition: transform 1s , opacity 0.7s;
+  transform: translateY(100%);
+  opacity: 0;
+}
+.product:hover .btn1 
+{
+  opacity: 1;
+  transform: translateY(0%);
+
+}
+
+
+.toggle-checkbox:checked {
+  @apply: right-0 border-green-400;
+  right: 0;
+}
+.toggle-checkbox:checked + .toggle-label {
+  @apply: bg-green-400;
+}
+.tog input{
+  background-color: rgb(14, 159, 110)  !important;
+  outline:none !important ;
+  border: none !important;
+  --tw-ring-offset-shadow:none !important;
+  --tw-ring-shadow: none !important;
+}
+/* .space-sh{
+  border: 1px solid #cfcccc;
+  border-bottom: none;
+  border-top: none;
+
+} */
+
+.space-sh {
+  /* border: 1px solid green;  */
+  /* box-shadow: 0px 0px 15px 5px rgba(0, 128, 0, 0.5);  */
+  transition: box-shadow 0.7s ease-in-out;
+}
+.product{
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.space-sh:hover {
+  box-shadow: 0px 0px 4px 4px green !important; 
+}
+.br-pr {
+  border: 1px solid #cfcccc;
+  border-bottom: none;
+}
+.br-prt {
+  border: 1px solid #cfcccc;
+  border-top: none;
+}
+
+.space-ss {
+  /* border: 1px solid green;  */
+  /* box-shadow: 0px 0px 15px 5px rgba(0, 128, 0, 0.5);  */
+  transition: box-shadow 0.7s ease-in-out;
+}
+.space-ss:hover {
+  box-shadow: 0px 0px 6px 6px green !important; 
+}
+
+.br-pr2{
+  border: 1px solid #cfcccc;
+
+}
+
+form{
+  border: 1px solid #bfbfbf !important; 
+}
+
