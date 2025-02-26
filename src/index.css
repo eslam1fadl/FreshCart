@@ -110,7 +110,15 @@ a , a:hover{
 
 }
 
+.form-payment{
+  border: none !important;
+  box-shadow: none !important;
+}
+
 form{
   border: 1px solid #bfbfbf !important; 
 }
 
+.form-footer{
+  border: none !important;
+}

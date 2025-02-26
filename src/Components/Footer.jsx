@@ -17,7 +17,7 @@ export default function Footer() {
             We will send you a link, open it on your phone to download the app.
           </p>
           
-          <form onSubmit={handleSubmit} className="flex gap-1 flex-wrap">
+          <form onSubmit={handleSubmit} className=" form-footer flex gap-1 flex-wrap">
             <input 
               type="email" 
               value={email}

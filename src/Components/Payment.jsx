@@ -1,29 +1,30 @@
-import { useMutation } from '@tanstack/react-query';
-import React from 'react';
-import { useFormik } from 'formik';
-import { paymentOnline } from '../Apis/Payment';
-import { motion } from 'framer-motion'; // تصحيح استيراد motion
+import { useMutation } from "@tanstack/react-query";
+import React from "react";
+import { useFormik } from "formik";
+import { paymentOnline } from "../Apis/Payment";
+import { motion } from "framer-motion"; 
 
 export default function Payment({ cartId }) {
-  let { mutate, data } = useMutation(paymentOnline); // إزالة الأقواس {} حول mutationFn
+  const mutation = useMutation({
+    mutationFn: paymentOnline,
+    onSuccess: (response) => {
+      if (response?.data?.status === "success") {
+        window.location.href = response?.data?.session?.url;
+      }
+    },
+  });
 
   function handlePayment(values) {
-    mutate({ cartId, shippingAddress: values });
+    mutation.mutate({ cartId, shippingAddress: values });
   }
 
-  if (data?.data?.status === 'success') {
-    window.location.href = data?.data?.session?.url;
-  }
-
-  console.log(data);
-
-  let formik = useFormik({
+  const formik = useFormik({
     initialValues: {
-      details: '',
-      city: '',
-      phone: ''
+      details: "",
+      city: "",
+      phone: "",
     },
-    onSubmit: handlePayment
+    onSubmit: handlePayment,
   });
 
   return (
@@ -38,36 +39,37 @@ export default function Payment({ cartId }) {
     >
       <div>
         <h2 className="my-5 text-2xl font-bold">Payment</h2>
-        <form onSubmit={formik.handleSubmit}>
-          <input className=' rounded-lg my-1'
+        <form className="form-payment" onSubmit={formik.handleSubmit}>
+          <input
+            className="rounded-lg my-1 p-2 border border-gray-300 w-full"
             type="text"
             name="details"
             value={formik.values.details}
             onChange={formik.handleChange}
-            id="details"
             placeholder="Enter details"
           />
           <br />
-          <input className=' rounded-lg my-1'
+          <input
+            className="rounded-lg my-1 p-2 border border-gray-300 w-full"
             type="text"
             name="city"
             value={formik.values.city}
             onChange={formik.handleChange}
-            id="city"
             placeholder="Enter city"
           />
           <br />
-          <input className=' rounded-lg my-1'
-            type="text" name="phone"
+          <input
+            className="rounded-lg my-1 p-2 border border-gray-300 w-full"
+            type="text"
+            name="phone"
             value={formik.values.phone}
             onChange={formik.handleChange}
-            id="phone"
             placeholder="Enter phone"
           />
           <br />
           <button
             type="submit"
-            className="px-5 py-2 text-white bg-green-500 rounded-2xl my-10"
+            className="px-5 py-2 text-white bg-green-500 rounded-2xl my-5 w-full hover:bg-green-600 transition"
           >
             Submit
           </button>
